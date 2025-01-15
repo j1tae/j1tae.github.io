@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>식당 게시판</title>
+    <link rel="stylesheet" href="/css/board.css">
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gowun+Batang&family=Gowun+Dodum&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="home-title" onclick="goHome()">
+            <img src="https://i.ibb.co/2q39S4Q/Kakao-Talk-20241105-184701002-removebg-preview.png" alt="밥상머리">
+            <span>밥상머리</span>
+        </div>
+        <nav>
+            <button onclick="navigateToBoard(1)">명진당</button>
+            <button onclick="navigateToBoard(2)">학생회관</button>
+            <button onclick="navigateToBoard(3)">복지동식당</button>
+            <button onclick="navigateToBoard(4)">교직원식당</button>
+        </nav>
+        <button id="logout-button" onclick="logout()">로그아웃</button>
+        <div id="datetime"></div>
+    </header>
+    
+    <main id="board">
+        <h2 class="board-title">식당 게시판</h2>
+        <div class="post-controls">
+            <button id="newPostBtn">게시글 작성</button>
+            <select id="sortOptions" onchange="sortPosts()">
+                <option value="latest">최신순</option>
+                <option value="likes">좋아요순</option>
+                <option value="title">제목순</option>
+            </select>
+            <div style="flex-grow: 1; text-align: right;">
+                <input type="text" id="searchInput" placeholder="검색..." oninput="filterPosts()">
+            </div>
+        </div>
+        <ul id="postList"></ul>
+    </main>
+    
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>게시글 작성</h2>
+            <form id="postForm">
+                <input type="text" id="title" placeholder="제목" required><br><br>
+                <textarea id="content" placeholder="내용" required></textarea><br><br>
+                <button type="submit">업로드</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 게시글 내용 모달 -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContentModal()">&times;</span>
+            <div id="postContent"></div>
+            <button id="likeButton"></button>
+            <!-- 게시글 ID를 동적으로 전달 -->
+            <button id="commentButton">댓글 보기</button>
+            <button onclick="deletePost();">삭제</button>
+            <button onclick="closeContentModal();">닫기</button>
+        </div>
+    </div>
+
+    <!-- 댓글 모달 -->
+    <!-- 댓글 모달 -->
+<div id="commentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCommentModal()">&times;</span>
+        <div id="comments"></div>
+        <form id="commentForm">
+            <input type="text" id="commentInput" placeholder="댓글을 입력하세요" required>
+            <button type="submit">댓글 추가</button>
+        </form>
+    </div>
+</div>
+
+    
+    <script>
+        // 댓글 보기 버튼 클릭 시, 해당 게시글 ID 전달
+        document.getElementById('commentButton').onclick = function () {
+            if (selectedPostId) {
+                openCommentModal(selectedPostId);
+            } else {
+                alert('게시글을 선택해주세요.');
+            }
+        };
+    </script>
+    <script src="/js/board.js"></script>
+</body>
+</html>

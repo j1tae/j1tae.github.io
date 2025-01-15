@@ -1,0 +1,378 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f6f9, #ffffff);
+    color: #333;
+    background-attachment: fixed;
+}
+
+/* 헤더 스타일 */
+header {
+    background-color: white;
+    padding: 40px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* 홈 타이틀 스타일 */
+#home-title {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#home-title img {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 30px; /* 위쪽 여백 추가 */
+}
+
+#home-title span {
+    font-size: 50px;
+    color: black;
+    padding: 5px;
+    font-family: "East Sea Dokdo", serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+#home-title:hover {
+    transform: scale(1.1);
+}
+
+/* 네비게이션 메뉴 스타일 */
+nav {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav button {
+    padding: 15px 20px;
+    margin: 5px 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+nav button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* 로그아웃 버튼 스타일 */
+#logout-button {
+    position: absolute;
+    top: 70%; /* 버튼을 수직 가운데로 */
+    right: 3%;
+    transform: translateY(-50%); /* 정렬 보정 */
+    font-size: 16px; /* 버튼 텍스트 크기 조정 */
+    color: black;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    text-decoration: underline;
+}
+
+/* 시간 표시 스타일 */
+#datetime {
+    font-size: 16px;
+    color: black;
+    position: absolute; /* 절대 위치 */
+    left: 50%; /* 수평 중앙 정렬 */
+    transform: translateX(-50%); /* 정렬 보정 */
+    margin-top: 15px; /* 위쪽 여백 */
+}
+
+
+/* 메인 컨텐츠 스타일 */
+main {
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.board-title {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* 게시글 작성 및 정렬 옵션 */
+.post-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.post-controls button, .post-controls select, .post-controls input[type="text"] {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+   
+}
+
+.post-controls select, .post-controls input[type="text"] {
+    margin-left: 10px;
+}
+
+.post-controls button {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.post-controls button:hover {
+    background-color: #f0f0f0;
+}
+
+/* 게시글 목록 스타일 */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: #f9f9f9;
+    margin: 15px 0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: #555;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    font-size: 1.1em;
+    color: #444;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: 90%;
+    width: 600px;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.close {
+    align-self: flex-end;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+#postModal h2 {
+    color: black;
+}
+
+/* 게시글 작성 폼 스타일 */
+#postForm input[type="text"], #postForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#postForm button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#postForm button:hover {
+    background-color: #f0f0f0;
+}
+
+/* 게시글 내용 모달 스타일 */
+#contentModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#postContent {
+    color: #444;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    word-break: break-word;
+}
+
+#postContent h2 {
+    margin-top: 0;
+}
+
+#postContent p {
+    margin-bottom: 15px;
+}
+
+/* 댓글 모달 스타일 */
+#commentModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#comments p {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: black;
+}
+
+/* 버튼 스타일 */
+button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    #home-title img {
+        width: 60px;
+        height: auto;
+    }
+
+    #home-title span {
+        font-size: 24px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav button {
+        margin: 5px 0;
+    }
+
+    .post-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-controls > * {
+        margin: 5px 0;
+    }
+}
+
+#contentModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 버튼들 간 간격 */
+}
+
+/* 버튼 스타일 업데이트 */
+#contentModal button {
+    padding: 10px 20px; /* 버튼 안쪽 여백 */
+    font-size: 16px; /* 글자 크기 */
+    background-color: white; /* 버튼 배경색 */
+    color: black; /* 버튼 텍스트 색상 */
+    border: 1px solid black; /* 테두리 추가 */
+    border-radius: 5px; /* 테두리 둥글게 */
+    cursor: pointer; /* 클릭 가능 */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 호버 효과 */
+    margin: 5px 0; /* 버튼 사이 여백 */
+}
+
+#contentModal button:hover {
+    background-color: black; /* 호버 시 배경색 검정 */
+    color: white; /* 호버 시 텍스트 흰색 */
+}
+/* 글 작성할 때 사용하는 부분 */
+#content {
+    width: 100%;
+    max-width: 1000px; /* 최대 너비 고정 */
+    height: 200px; /* 높이 고정 */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none; /* 사용자가 크기 조절 못하도록 설정 */
+  }
+
+  #sortBtn {
+    padding: 5px 10px; /* 버튼 크기 조정 */
+    font-size: 14px; /* 글자 크기 조정 */
+    margin-left: 15px; /* 왼쪽과의 간격 조정 */
+    border: 1px solid #ccc; /* 테두리 스타일 */
+    border-radius: 5px; /* 둥근 테두리 */
+    background-color: #fff; /* 배경색 */
+    color: #333; /* 텍스트 색상 */
+    cursor: pointer; /* 클릭 가능 커서 */
+    transition: background-color 0.3s, color 0.3s; /* 호버 효과 */
+}
